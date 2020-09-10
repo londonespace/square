@@ -20,9 +20,10 @@ const del = require('del');
 
 function initBrowserSync() {
 	browserSync.init({
-		server: { baseDir: 'app/html/' },
+		server: { baseDir: 'app' },
 		notify: false,
-		open: false
+		open: false,
+		startPath: '/html/index.html'
 	});
 }
 
@@ -47,12 +48,12 @@ let sassModules = [
 
 function concatSass() {
 	return src(sassModules)
-		.pipe(concat('styles.min.sass'))
+		.pipe(concat('app.min.sass'))
 		.pipe(dest('app/sass/'));
 }
 
 function compilateToCSS() {
-	return src('app/sass/styles.min.sass')
+	return src('app/sass/app.min.sass')
 		.pipe(sass())
 		.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
 		.pipe(cleanCSS(({ level: { 1: { specialComments: 0 } }/*, format: 'beautify'*/ })))
@@ -61,7 +62,7 @@ function compilateToCSS() {
 }
 
 function modifyUrls() {
-	return src('app/css/styles.min.css')
+	return src('app/css/app.min.css')
 		.pipe(modifyCssUrls({
 			modify: (url, filePath) => {
 				let newUrl = url;
@@ -124,7 +125,7 @@ function cleanDist() {
 
 function startWatching() {
 	watch('app/pug/*.pug', compilateToHTML);
-	watch(['app/sass/**/*.sass', '!app/sass/styles.min.sass', '!app/sass/temp/*.sass'], styles);
+	watch(['app/sass/**/*.sass', '!app/sass/app.min.sass'], styles);
 	watch(['app/js/*.js', '!app/js/app.min.js'], buildScripts);
 	watch('app/img/*', minimazeImages);
 }
