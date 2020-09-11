@@ -81,7 +81,12 @@ function modifyUrls() {
 
 // SCRIPTS
 
-let jsModules = ['app/js/custom/*.js'];
+let jsModules = [
+	'app/libs/jquery/jquery.min.js',
+	'app/libs/mmenu-js/mmenu.js',
+	'app/libs/owl-carousel/owl.carousel.min.js',
+	'app/js/custom/*.js',
+];
 
 function buildScripts() {
 	return src(jsModules)
