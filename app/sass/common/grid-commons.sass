@@ -1,0 +1,11 @@
+.container
+  max-width: $w-xl
+  margin: 0 auto
+
+%centering-flex
+  display: flex
+  justify-content: center
+  align-items: center
+
+@function grid-width($count, $container-size)
+  @return ($container-size - $gutter*2*11)*$count/12 + $gutter*2*($count - 1)

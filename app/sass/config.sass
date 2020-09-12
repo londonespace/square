@@ -1,17 +1,28 @@
-// USER VARIABLES SECTION
-
 $accent: #c3a000
 $fontsize: 14px
-$textcolor: #362f2f
+$darkgrey: #362f2f
 
 $roboto: 'Roboto-square'
 $opensans: 'Opensans-square'
-$fontawesome: 'Fontawesome-square'
+$fontawesome: 'FontAwesome'
+
+$common-transition: all .25 ease
+$img-dir: '../../img'
+
+// BOOTSTRAP SIZES
+
+$b-xl: 1200px
+$b-lg: 992px
+$b-md: 768px
+$b-sm: 576px
+
+$w-xl: 1140px
+$w-lg: 960px
+$w-md: 720px
+$w-sm: 540px
 
 $gutter: 15px
-$common-transition: all .25 ease
-
-$img-dir: '../../img'
+//--
 
 @mixin font($fname, $fstyle, $fweight, $furl)
 	@font-face
@@ -26,7 +37,7 @@ $img-dir: '../../img'
 @include font('Roboto-square', normal, 400, '../fonts/robotocondensed-regular-webfont.woff2')
 @include font('Roboto-square', normal, 700, '../fonts/robotocondensed-regular-webfont.woff2')
 @include font('Opensans-square', normal, 400, '../fonts/opensans-regular-webfont.woff2')
-@include font('Fontawesome-square', normal, 400, '../fonts/fontawesome-webfont.woff2')
+@include font('FontAwesome', normal, 400, '../fonts/fontawesome-webfont.woff2')
 
 @import '../libs/font-awesome/font-awesome.min.css'
 @import '../libs/mmenu-js/mmenu.css'
@@ -58,5 +69,6 @@ body
 	position: relative
 	line-height: 1.65
 	overflow-x: hidden
-	color: $textcolor
+	color: $darkgrey
 	background-color: #fff
+	margin-top: 0

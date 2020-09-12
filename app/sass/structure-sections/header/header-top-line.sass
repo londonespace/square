@@ -1,0 +1,39 @@
+.header-top-line
+  @extend .container
+  display: grid
+  position: relative
+  grid-template-columns: grid-width(1, $w-xl) auto grid-width(2, $w-xl)
+  height: 70px
+
+.header-hamburger-wrapper
+  @extend %centering-flex
+  padding-right: $gutter
+
+.header-logo-square
+  position: absolute
+  left: 50%
+  top: 0
+  transform: translateX(-50%)
+
+.header-social-links-wrapper
+  @extend %centering-flex
+
+.header-social-links
+  @extend .social-links
+
+.header-social-link
+  @extend .social-link
+
+@media only screen and (max-width : $b-md)
+  .header-top-line
+    grid-template-columns: grid-width(1, $w-xl) auto grid-width(2, $w-md)
+
+  .header-logo-square
+    width: 70px
+    height: 70px
+  
+  @for $i from 1 through 3
+    .header-social-link-item:nth-last-child(#{$i})
+      display: none
+
+
