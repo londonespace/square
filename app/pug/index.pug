@@ -6,17 +6,18 @@ html(lang="en")
     title Square
     link(rel="icon" href="../img/favicon.png")
     link(rel="stylesheet" href="../css/app.min.css")
+
   body
     header.site-header
 
       div.header-top-line
 
         div.header-hamburger-wrapper
-          button.hamburger.hamburger--squeeze(type="button")
+          a.hamburger.hamburger--squeeze(href="#m-menu")
             span.hamburger-box: span.hamburger-inner
 
         div.header-logo-wrapper
-          img.header-logo-square(src="../img/square-logo.png" alt="squere")
+          img.header-logo-square(src="../img/square-logo.svg" alt="square")
 
         div.header-social-links-wrapper
           ul.header-social-links
@@ -26,3 +27,14 @@ html(lang="en")
             li.header-social-link-item: a.header-social-link(href="#"): i.fa.fa-flickr
             li.header-social-link-item: a.header-social-link(href="#"): i.fa.fa-google-plus
             li.header-social-link-item: a.header-social-link(href="#"): i.fa.fa-envelope
+
+    nav#m-menu
+      ul
+        li: a(href="/") home
+        li: a(href="/") about
+        li: a(href="/") blog
+        li: a(href="/") portfolio
+        li: a(href="/") post
+        li: a(href="/") contact
+
+    script(src="../js/app.min.js")

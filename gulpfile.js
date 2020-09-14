@@ -3,6 +3,7 @@ const { src, dest, parallel, series, watch } = require('gulp');
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
+const sourcemaps = require('gulp-sourcemaps');
 
 const pug = require('gulp-pug');
 
@@ -38,44 +39,40 @@ function compilateToHTML() {
 
 // STYLES
 
-const styles = series(concatSass, compilateToCSS, modifyUrls);
-
 let sassModules = [
 	'app/sass/config.sass',
 	'app/sass/common/*.sass',
 	'app/sass/elements/*.sass',
 	'app/sass/structure-sections/**/*.sass'];
 
-function concatSass() {
-	return src(sassModules)
-		.pipe(concat('app.min.sass'))
-		.pipe(dest('app/sass/'));
-}
+let modifyCssUrlsOptions = {
+	modify: (url, filePath) => {
+		let newUrl = url;
+		let reverseCwd = '../';
+		if (url.includes('/img/')) newUrl = url.slice(reverseCwd.length);
+		return newUrl;
+	},
+	prepend: '',
+	append: ''
+};
 
-function compilateToCSS() {
-	return src('app/sass/app.min.sass')
+function buildAppStyles() {
+	return src(sassModules)
+		.pipe(sourcemaps.init())
+		.pipe(concat('app.min.sass'))
 		.pipe(sass())
-		.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
-		.pipe(cleanCSS(({ level: { 1: { specialComments: 0 } }/*, format: 'beautify'*/ })))
+		.pipe(sourcemaps.write())
 		.pipe(dest('app/css/'))
 		.pipe(browserSync.stream());
 }
 
-function modifyUrls() {
-	return src('app/css/app.min.css')
-		.pipe(modifyCssUrls({
-			modify: (url, filePath) => {
-				let newUrl = url;
-				let reverseCwd = '../';
-
-				if (url.includes('/img/')) newUrl = url.slice(reverseCwd.length);
-
-				return newUrl;
-			},
-
-			prepend: '',
-			append: ''
-		}))
+function buildDistStyles() {
+	return src(sassModules)
+		.pipe(concat('app.min.sass'))
+		.pipe(sass())
+		.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
+		.pipe(cleanCSS(({ level: { 1: { specialComments: 0 } }/*, format: 'beautify'*/ })))
+		.pipe(modifyCssUrls(modifyCssUrlsOptions))
 		.pipe(dest('app/css/'));
 }
 
@@ -85,15 +82,25 @@ let jsModules = [
 	'app/libs/jquery/jquery.min.js',
 	'app/libs/mmenu-js/mmenu.js',
 	'app/libs/owl-carousel/owl.carousel.min.js',
+	'app/js/include/*.js',
 	'app/js/custom/*.js',
 ];
 
-function buildScripts() {
+function buildAppScripts() {
+	return src(jsModules)
+		.pipe(sourcemaps.init())
+		.pipe(concat('app.min.js'))
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(dest('app/js/'))
+		.pipe(browserSync.stream());
+}
+
+function buildDistScripts() {
 	return src(jsModules)
 		.pipe(concat('app.min.js'))
 		.pipe(uglify())
 		.pipe(dest('app/js/'))
-		.pipe(browserSync.stream());
 }
 
 //IMAGES
@@ -130,8 +137,8 @@ function cleanDist() {
 
 function startWatching() {
 	watch('app/pug/*.pug', compilateToHTML);
-	watch(['app/sass/**/*.sass', '!app/sass/app.min.sass'], styles);
-	watch(['app/js/*.js', '!app/js/app.min.js'], buildScripts);
+	watch(['app/sass/**/*.sass', '!app/sass/app.min.sass'], buildAppStyles);
+	watch(['app/js/**/*.js', '!app/js/app.min.js'], buildAppScripts);
 	watch('app/img/*', minimazeImages);
 }
 
@@ -139,10 +146,10 @@ function startWatching() {
 exports.initBrowserSync = initBrowserSync;
 
 exports.markup = compilateToHTML;
-exports.styles = styles;
-exports.scripts = buildScripts;
+exports.styles = buildAppStyles;
+exports.scripts = buildAppScripts;
 
-const transformCode = series(compilateToHTML, styles, buildScripts);
+const transformCode = series(compilateToHTML, buildAppStyles, buildAppScripts);
 
 exports.minimazeImages = minimazeImages;
 exports.cleanMinImages = cleanMinImages;
