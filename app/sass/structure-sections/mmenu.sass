@@ -1,4 +1,35 @@
 .m-menu-square-logo-dark
   width: 70px
   height: 70px
-  padding: 10px 0
+
+.m-menu-logo-wrapper
+  border: 6px solid $accent
+  margin: 10px 0
+
+.m-menu-list
+  margin-top: 25px
+  display: inline-block
+  margin-left: 35%
+
+.m-menu-link
+  text-transform: capitalize
+  display: inline-block
+  padding-top: 8px
+  padding-bottom: 8px
+  padding-left: 20px
+  position: relative
+  font-size: 15px
+  transition: $common-transition
+
+  &::before
+    font-family: $fontawesome
+    content: '\f1b2'
+    font-size: 12px
+    position: absolute
+    left: 0
+    color: #fff
+    transition: $common-transition
+
+a.m-menu-link
+  &:active, &:hover, &:hover::before
+    color: $accent

@@ -1,6 +1,7 @@
 const { src, dest, parallel, series, watch } = require('gulp');
 
 const browserSync = require('browser-sync').create();
+const browserify = require('gulp-browserify');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
 const sourcemaps = require('gulp-sourcemaps');
@@ -39,11 +40,22 @@ function compilateToHTML() {
 
 // STYLES
 
-let sassModules = [
+let cssLibs = [
+	'app/libs/font-awesome/font-awesome.min.css',
+	'app/libs/custom-mmenu-js/dist/mmenu.css',
+	'app/libs/custom-hamburgers/dist/hamburgers.css',
+	'app/libs/owl-carousel/assets/owl.carousel.min.css',
+	'app/libs/owl-carousel/assets/owl.theme.default.min.css'
+];
+
+let customModules = [
 	'app/sass/config.sass',
 	'app/sass/common/*.sass',
 	'app/sass/elements/*.sass',
-	'app/sass/structure-sections/**/*.sass'];
+	'app/sass/structure-sections/**/*.sass'
+];
+
+let styleModules = cssLibs.concat(customModules);
 
 let modifyCssUrlsOptions = {
 	modify: (url, filePath) => {
@@ -57,7 +69,7 @@ let modifyCssUrlsOptions = {
 };
 
 function buildAppStyles() {
-	return src(sassModules)
+	return src(customModules)
 		.pipe(sourcemaps.init())
 		.pipe(concat('app.min.sass'))
 		.pipe(sass())
@@ -67,7 +79,7 @@ function buildAppStyles() {
 }
 
 function buildDistStyles() {
-	return src(sassModules)
+	return src(customModules)
 		.pipe(concat('app.min.sass'))
 		.pipe(sass())
 		.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
@@ -80,7 +92,7 @@ function buildDistStyles() {
 
 let jsModules = [
 	'app/libs/jquery/jquery.min.js',
-	'app/libs/mmenu-js/mmenu.js',
+	'app/libs/custom-mmenu-js/dist/mmenu.js',
 	'app/libs/owl-carousel/owl.carousel.min.js',
 	'app/js/include/*.js',
 	'app/js/custom/*.js',
@@ -89,6 +101,9 @@ let jsModules = [
 function buildAppScripts() {
 	return src(jsModules)
 		.pipe(sourcemaps.init())
+		// .pipe(browserify({
+		// 	insertGlobals: true
+		// }))
 		.pipe(concat('app.min.js'))
 		.pipe(uglify())
 		.pipe(sourcemaps.write())
@@ -137,7 +152,7 @@ function cleanDist() {
 
 function startWatching() {
 	watch('app/pug/*.pug', compilateToHTML);
-	watch(['app/sass/**/*.sass', '!app/sass/app.min.sass'], buildAppStyles);
+	watch(styleModules, buildAppStyles);
 	watch(['app/js/**/*.js', '!app/js/app.min.js'], buildAppScripts);
 	watch('app/img/*', minimazeImages);
 }
