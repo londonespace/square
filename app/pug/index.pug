@@ -1,3 +1,5 @@
+include includes/link-class.pug
+
 doctype html
 html(lang="en")
   head
@@ -9,32 +11,30 @@ html(lang="en")
 
   body
     header.site-header
+      .header-hamburger-wrapper
+        a.hamburger.hamburger--squeeze(href="#m-menu")
+          span.hamburger-box: span.hamburger-inner
 
-      div.header-top-line
+      .header-logo-wrapper
+        img.header-logo-square(src="../img/square-logo.svg" alt="square")
 
-        div.header-hamburger-wrapper
-          a.hamburger.hamburger--squeeze(href="#m-menu")
-            span.hamburger-box: span.hamburger-inner
+      .header-social-links-wrapper
+        ul.header-social-links
+          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-facebook")
+          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-twitter")
+          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-instagram")
+          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-flickr")
+          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-google-plus")
+          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-envelope")
 
-        div.header-logo-wrapper
-          img.header-logo-square(src="../img/square-logo.svg" alt="square")
-
-        div.header-social-links-wrapper
-          ul.header-social-links
-            li.header-social-link-item: a.header-social-link(href="#"): i.fa.fa-facebook
-            li.header-social-link-item: a.header-social-link(href="#"): i.fa.fa-twitter
-            li.header-social-link-item: a.header-social-link(href="#"): i.fa.fa-instagram
-            li.header-social-link-item: a.header-social-link(href="#"): i.fa.fa-flickr
-            li.header-social-link-item: a.header-social-link(href="#"): i.fa.fa-google-plus
-            li.header-social-link-item: a.header-social-link(href="#"): i.fa.fa-envelope
 
     nav#m-menu
       ul.m-menu-list
-        li.m-menu-list-item: a.m-menu-link(href="/") home
-        li.m-menu-list-item: a.m-menu-link(href="/") about
-        li.m-menu-list-item: a.m-menu-link(href="/") blog
-        li.m-menu-list-item: a.m-menu-link(href="/") portfolio
-        li.m-menu-list-item: a.m-menu-link(href="/") post
-        li.m-menu-list-item: a.m-menu-link(href="/") contact
+        li.m-menu-list-item: a.m-menu-link(href="#") home
+        li.m-menu-list-item: a.m-menu-link(href="#") about
+        li.m-menu-list-item: a.m-menu-link(href="#") blog
+        li.m-menu-list-item: a.m-menu-link(href="#") portfolio
+        li.m-menu-list-item: a.m-menu-link(href="#") post
+        li.m-menu-list-item: a.m-menu-link(href="#") contact
 
     script(src="../js/app.min.js")

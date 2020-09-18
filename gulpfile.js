@@ -32,7 +32,7 @@ function initBrowserSync() {
 // MARKUP
 
 function compilateToHTML() {
-	return src('app/pug/**/*.pug')
+	return src('app/pug/*.pug')
 		.pipe(pug())
 		.pipe(dest('app/html/'))
 		.pipe(browserSync.stream());
@@ -151,7 +151,7 @@ function cleanDist() {
 // WATCH
 
 function startWatching() {
-	watch('app/pug/*.pug', compilateToHTML);
+	watch('app/pug/**/*.pug', compilateToHTML);
 	watch(styleModules, buildAppStyles);
 	watch(['app/js/**/*.js', '!app/js/app.min.js'], buildAppScripts);
 	watch('app/img/*', minimazeImages);
