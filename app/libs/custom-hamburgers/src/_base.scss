@@ -1,7 +1,10 @@
 // Hamburger
 // ==================================================
 .hamburger {
-  padding: $hamburger-padding-top $hamburger-padding-x $hamburger-padding-bottom;
+  padding-top: $hamburger-padding-top;
+  padding-right: $hamburger-padding-right;
+  padding-bottom: $hamburger-padding-bottom;
+  padding-left: $hamburger-padding-left;
   background-color: $hamburger-background-color;
   display: inline-block;
   cursor: pointer;
