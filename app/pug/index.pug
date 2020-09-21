@@ -27,31 +27,36 @@ html(lang="en")
 
     main
       section.s-actors
-        .s-actors-slider.owl-carousel
-          mixin s-actors-item(name)  
-            .s-actors-item
-              img(src=`../img/actors/${name}.png` alt=name)
+        -
+          let actors = ['Morgan-Freeman', 'Brad-Pitt', 'Bruce-Willis', 'Jennifer-Aninston', 'Jennifer-Lopez', 
+          'Johnny-Depp', 'Keira-Knightley', 'Will-Smith'];
+        .s-actors-slider#actors-slider
 
+          .s-actors-image-container
+            - for (actorName of actors)
+              img(class="s-actors-portrait" src=`../img/actors/${actorName}.png` alt=actorName)
+
+          .s-actors-info-container
+            .s-actors-share-buttons
+              button.like:  i.fa-fa-heart
+              button.share: i.fa-fa-share
+              button.mail:  i.fa-fa-envelop
+
+            .s-actors-nav.buttons
+              button.nav-prev: i.fa-fa-angle-left
+              button.nav-next: i.fa-fa-angle-right
+
+            button.full-screen
+
+            mixin s-actors-information(name)
               .s-actors-information
                 h3.s-actors-name #{name}
                 em.s-actors-profession actor
                 p.s-actors-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                   | Quisque fringilla mi orci, ac venenatis ante venenatis eget.
 
-              .s-actors-share-buttons
-                button.like
-                button.share
-                button.mail
-
-              button.full-screen
-
-          -
-            let actors = ['Morgan-Freeman', 'Brad-Pitt', 'Bruce-Willis', 'Jennifer-Aninston', 'Jennifer-Lopez', 
-            'Johnny-Depp', 'Keira-Knightley', 'Will-Smith'];
-
-          - for(let actorName of actors)
-            +s-actors-item(actorName)
-
+            - for(let actorName of actors)
+              +s-actors-information(actorName)
 
     nav#m-menu
       ul.m-menu-list
