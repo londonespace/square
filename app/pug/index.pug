@@ -30,6 +30,7 @@ html(lang="en")
         -
           let actors = ['Morgan-Freeman', 'Brad-Pitt', 'Bruce-Willis', 'Jennifer-Aninston', 'Jennifer-Lopez', 
           'Johnny-Depp', 'Keira-Knightley', 'Will-Smith'];
+
         .s-actors-slider#actors-slider
 
           .s-actors-image-container
@@ -37,17 +38,6 @@ html(lang="en")
               img(class="s-actors-portrait" src=`../img/actors/${actorName}.png` alt=actorName)
 
           .s-actors-info-container
-            .s-actors-share-buttons
-              button.like:  i.fa-fa-heart
-              button.share: i.fa-fa-share
-              button.mail:  i.fa-fa-envelop
-
-            .s-actors-nav.buttons
-              button.nav-prev: i.fa-fa-angle-left
-              button.nav-next: i.fa-fa-angle-right
-
-            button.full-screen
-
             mixin s-actors-information(name)
               .s-actors-information
                 h3.s-actors-name #{name}
@@ -57,6 +47,16 @@ html(lang="en")
 
             - for(let actorName of actors)
               +s-actors-information(actorName)
+
+            .s-actors-nav
+              button.nav-btn-prev
+              button.nav-btn-next
+
+            .s-actors-link-wrapper: a(href="#").s-actors-like:  i.fa.fa-heart
+            .s-actors-link-wrapper: a(href="#").s-actors-share: i.fa.fa-share
+            .s-actors-link-wrapper: a(href="#").s-actors-mail:  i.fa.fa-envelope
+
+            a(href="#").s-actors-full-screen: i.fa.fa-compress
 
     nav#m-menu
       ul.m-menu-list

@@ -1,0 +1,20 @@
+.nav-btn
+  width: 33px
+  height: 34px
+  background-color: $darkgrey
+  outline: none
+  
+  &::after
+    display: block
+    font-family: $fontawesome
+    color: white
+
+.nav-btn-prev
+  @extend .nav-btn
+  &::after
+    content: '\f104'
+
+.nav-btn-next
+  @extend .nav-btn
+  &::after
+    content: '\f105'

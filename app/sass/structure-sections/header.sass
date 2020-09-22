@@ -16,6 +16,7 @@
   left: 50%
   top: 0
   transform: translateX(-50%)
+  z-index: 2
 
 .header-social-links-wrapper
   @extend %centering-flex
@@ -33,9 +34,7 @@
   .header-logo-square
     width: 70px
     height: 70px
-  
+
   @for $i from 1 through 3
     .header-social-link-item:nth-last-child(#{$i})
       display: none
-
-
