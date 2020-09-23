@@ -12,7 +12,6 @@ $(function () {
     }
   }
 
-  $(button).addClass('in-nav');
   $(button).on('click', onClick);
 
   function onClick() {
@@ -23,33 +22,12 @@ $(function () {
     }
   }
 
-  async function minimizeNav() {
-    await $(button).appendTo('#actors-slider')
-      .css({ 'left': cord.x, 'bottom': cord.y })
-      .toggleClass('in-nav out-nav').promise();
-
-    $(button).css({ 'left': 0, 'bottom': 0 })
-      .on('transitionend', onTransitionEnd);
-
-    $(container).addClass('minimized');
-
-    function onTransitionEnd() {
-      $(button).css({ 'left': '', 'bottom': '' })
-        .off('transitionend', onTransitionEnd);
-    }
+  function minimizeNav() {
+    $(container).css('transform', `translate(-${cord.x}px, ${cord.y}px)`)
+      .addClass('minimized');
   }
 
   function maximizeNav() {
-    $(button).css({ 'left': cord.x, 'bottom': cord.y })
-      .on('transitionend', onTransitionEnd);
-
-    $(container).removeClass('minimized');
-
-    function onTransitionEnd() {
-      $(button).appendTo(container)
-        .toggleClass('in-nav out-nav')
-        .css({ 'left': '', 'bottom': '' })
-        .off('transitionend', onTransitionEnd);
-    }
+    $(container).css('transform', 'translate(0)').removeClass('minimized');
   }
 })

@@ -1,6 +1,7 @@
 .s-actors-slider
   @extend .container
   position: relative
+  overflow: hidden
 
 $slider-transition: all 1s ease
 
@@ -19,10 +20,6 @@ $slider-transition: all 1s ease
   grid-template-columns: repeat(3, 1fr)
   grid-template-rows: 170/262.5*100% 92.5/262.5*100%
   transition: $slider-transition
-
-  &.minimized
-    transform: translate(-50%, 50%) scale(0)
-    opacity: 0
 
 .as-image-wrapper
   line-height: 0
@@ -75,16 +72,13 @@ $slider-transition: all 1s ease
 .s-actors-full-screen
   position: absolute
   z-index: 2
-  padding: 7px
-  color: $accent
+  color: white
   transition: $slider-transition
-
-  &.in-nav
-    top: 0px
-    right: 0px
-
-  &.out-nav
-    left: 0
-    bottom: 0
+  box-sizing: border-box
+  width: 30px
+  height: 30px
+  background-color: $accent
+  top: 0px
+  right: 0px
     
 
