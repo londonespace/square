@@ -2,9 +2,11 @@
   @extend .container
   position: relative
 
+$slider-transition: all 1s ease
+
 .s-actors-image-container
   height: $w-xl
-
+  
 .s-actors-info-container
   position: absolute
   left: 0
@@ -16,6 +18,11 @@
   display: grid
   grid-template-columns: repeat(3, 1fr)
   grid-template-rows: 170/262.5*100% 92.5/262.5*100%
+  transition: $slider-transition
+
+  &.minimized
+    transform: translate(-50%, 50%) scale(0)
+    opacity: 0
 
 .as-image-wrapper
   line-height: 0
@@ -67,7 +74,17 @@
 
 .s-actors-full-screen
   position: absolute
-  top: 7px
-  right: 7px
+  z-index: 2
+  padding: 7px
   color: $accent
+  transition: $slider-transition
+
+  &.in-nav
+    top: 0px
+    right: 0px
+
+  &.out-nav
+    left: 0
+    bottom: 0
+    
 
