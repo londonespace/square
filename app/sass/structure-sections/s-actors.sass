@@ -3,24 +3,74 @@
   position: relative
   overflow: hidden
 
-$slider-transition: all 1s ease
+$slider-transition: all .5s ease
 
 .s-actors-image-container
   height: $w-xl
+
+$nav-container-side: grid-width(3, $w-xl)
+$popup-btn-side: 30px
+$delta-val: $nav-container-side - $popup-btn-side
   
 .s-actors-info-container
   position: absolute
   left: 0
   bottom: 0
-  background-color: #fff
   z-index: 2
-  width: grid-width(3, $w-xl)
-  height: grid-width(3, $w-xl)
+  width: $nav-container-side
+  height: $nav-container-side
   display: grid
   grid-template-columns: repeat(3, 1fr)
   grid-template-rows: 170/262.5*100% 92.5/262.5*100%
   transition: $slider-transition
 
+  $tt: transparent
+  $gradient-1: linear-gradient(0, #fff, #fff $delta-val, $tt $delta-val, $tt)
+  $gradient-2: linear-gradient(90deg, #fff, $delta-val, $tt $delta-val, $tt)
+  background: $gradient-1, $gradient-2
+
+.s-actors-popup-btn
+  position: absolute
+  z-index: 2
+  color: white
+  transition: $common-transition
+  box-sizing: border-box
+  width: $popup-btn-side
+  height: $popup-btn-side
+  top: 0px
+  right: 0px
+  border-top: 1px solid #fff
+  border-right: 1px solid #fff
+
+  &::before
+    position: absolute
+    z-index: 2
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    font-family: $fontawesome
+    font-size: 14px
+
+  &.compress
+    color: $accent
+    background-color: #fff
+
+  &.compress:hover
+    color: white
+
+  &.expand
+    background-color: transparent
+
+  &.compress::before
+    content: '\f066'
+
+  &.expand::before
+    content: '\f065'
+
+  &:hover
+    background-color: $accent
+    border-color: $accent
+  
 .as-image-wrapper
   line-height: 0
 
@@ -65,20 +115,13 @@ $slider-transition: all 1s ease
 .s-actors-link
   margin-bottom: 21/92.5*100%
   color: $accent
+  opacity: 0.8
+  transition: $common-transition
+
+  &:hover
+    opacity: 1
 
 .s-actors-like, .s-actors-share, .s-actors-mail
   @extend .s-actors-link
 
-.s-actors-full-screen
-  position: absolute
-  z-index: 2
-  color: white
-  transition: $slider-transition
-  box-sizing: border-box
-  width: 30px
-  height: 30px
-  background-color: $accent
-  top: 0px
-  right: 0px
-    
 

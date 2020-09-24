@@ -3,11 +3,15 @@
   height: 34px
   background-color: $darkgrey
   outline: none
+  transition: $common-transition
   
   &::after
     display: block
     font-family: $fontawesome
     color: white
+
+  &:hover
+    opacity: 0.9
 
 .nav-btn-prev
   @extend .nav-btn
