@@ -1,6 +1,6 @@
 $(function () {
   let container = $('#actors-slider .s-actors-info-container');
-  let button = $('#actors-slider .s-actors-full-screen');
+  let button = $('#actors-slider .s-actors-popup-btn');
 
   let cord = {
     get x() {
@@ -12,6 +12,7 @@ $(function () {
     }
   }
 
+  $(button).addClass('compress');
   $(button).on('click', onClick);
 
   function onClick() {
@@ -25,9 +26,11 @@ $(function () {
   function minimizeNav() {
     $(container).css('transform', `translate(-${cord.x}px, ${cord.y}px)`)
       .addClass('minimized');
+    $(button).removeClass('compress').addClass('expand');
   }
 
   function maximizeNav() {
     $(container).css('transform', 'translate(0)').removeClass('minimized');
+    $(button).removeClass('expand').addClass('compress');
   }
 })
