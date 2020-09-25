@@ -27,14 +27,18 @@
 .header-social-link
   @extend .social-link
 
-@media only screen and (max-width : $b-md)
+@media only screen and ( max-width : $b-md )
   .site-header
     grid-template-columns: grid-width(1, $w-xl) auto grid-width(2, $w-md)
-
-  .header-logo-square
-    width: 70px
-    height: 70px
 
   @for $i from 1 through 3
     .header-social-link-item:nth-last-child(#{$i})
       display: none
+
+@media only screen and ( max-width : $b-sm )
+  .site-header
+    height: 55px
+
+  .header-logo-square
+    width: 70px
+    height: 70px
