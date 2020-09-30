@@ -35,22 +35,22 @@ html(lang="en")
 
           .s-actors-image-container
             - for (actorName of actors)
-              img(class="s-actors-portrait" src=`../img/actors/${actorName}.png` alt=actorName)
+              img(class="s-actors-image" src=`../img/actors/${actorName}.png` alt=actorName)
 
-          .s-actors-info-container
-            mixin s-actors-information(name)
-              .s-actors-information
+          .s-actors-nav
+            mixin s-actors-info(name)
+              .s-actors-info
                 h3.s-actors-name #{name}
                 em.s-actors-profession actor
                 p.s-actors-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                   | Quisque fringilla mi orci, ac venenatis ante venenatis eget.
 
             - for(let actorName of actors)
-              +s-actors-information(actorName)
+              +s-actors-info(actorName)
 
-            .s-actors-nav
-              button.nav-btn-prev
-              button.nav-btn-next
+            .s-actors-nav-btns
+              button.s-actors-nav-btn-prev
+              button.s-actors-nav-btn-next
 
             .s-actors-link-wrapper: a(href="#").s-actors-like:  i.fa.fa-heart
             .s-actors-link-wrapper: a(href="#").s-actors-share: i.fa.fa-share

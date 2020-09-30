@@ -1,0 +1,36 @@
+.s-actors-info
+  padding-left: $gutter
+
+.s-actors-name
+  font-size: 18px
+  text-transform: uppercase
+  margin: 0
+  margin-top: 65/292.5*100%
+
+.s-actors-profession
+  font-style: italic
+  font-size: 16px
+  font-weight: 300
+
+.s-actors-text
+  font-weight: 300
+  margin-top: 7.5px
+  margin-bottom: 0
+
+.s-actors-link-wrapper
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  text-align: center
+
+.s-actors-link
+  margin-bottom: 21/92.5*100%
+  color: $accent
+  opacity: 0.8
+  transition: $common-transition
+
+  &:hover
+    opacity: 1
+
+.s-actors-like, .s-actors-share, .s-actors-mail
+  @extend .s-actors-link

@@ -1,0 +1,47 @@
+@import 'app/sass/structure-sections/s-actors/_s-actors-var.sass'
+
+.s-actors-popup-btn
+  position: absolute
+  z-index: 2
+  color: white
+  transition: $common-transition
+  box-sizing: border-box
+  width: $popup-btn-side
+  height: $popup-btn-side
+  top: 0px
+  right: 0px
+  border-top: 1px solid #fff
+  border-right: 1px solid #fff
+
+  &::before
+    position: absolute
+    z-index: 2
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    font-family: $fontawesome
+    font-size: 14px
+
+  &.compress
+    color: $accent
+    background-color: #fff
+
+  &.compress:hover
+    color: white
+
+  &.expand
+    background-color: transparent
+
+  &.compress::before
+    content: '\f066'
+
+  &.expand::before
+    content: '\f065'
+
+  &:hover
+    background-color: $accent
+    border-color: $accent
+
+@include media-max($b-md)
+  .s-actors-popup
+    display: none
