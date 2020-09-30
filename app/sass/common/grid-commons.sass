@@ -1,3 +1,18 @@
+//BOOTSTRAP SIZES
+$b-xl: 1200px
+$b-lg: 992px
+$b-md: 768px
+$b-sm: 576px
+
+$w-xl: 1140px
+$w-lg: 960px
+$w-md: 720px
+$w-sm: 540px
+
+$gutter: 15px
+
+$sizes: ($b-xl: $w-xl, $b-lg: $w-lg, $b-md: $w-md, $b-sm: $w-sm)
+
 .container
   max-width: $w-xl
   margin: 0 auto
@@ -9,3 +24,7 @@
 
 @function grid-width($count, $container-size)
   @return ($container-size - $gutter*2*11)*$count/12 + $gutter*2*($count - 1)
+
+@mixin media-max($m-width)
+  @media screen and ( max-width: $m-width )
+    @content
