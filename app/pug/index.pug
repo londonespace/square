@@ -48,14 +48,15 @@ html(lang="en")
             - for(let actorName of actors)
               +s-actors-info(actorName)
 
-            .s-actors-nav-btns
+            .s-actors-nav-control
               button.s-actors-nav-btn-prev
               button.s-actors-nav-btn-next
-              .s-actors-nav-counter 1/9
+              .s-actors-nav-counter
 
-            .s-actors-link-wrapper: a(href="#").s-actors-like:  i.fa.fa-heart
-            .s-actors-link-wrapper: a(href="#").s-actors-share: i.fa.fa-share
-            .s-actors-link-wrapper: a(href="#").s-actors-mail:  i.fa.fa-envelope
+            .s-actors-links
+              a(href="#").s-actors-like:  i.fa.fa-heart
+              a(href="#").s-actors-share: i.fa.fa-share
+              a(href="#").s-actors-mail:  i.fa.fa-envelope
 
             button.s-actors-popup-btn
 

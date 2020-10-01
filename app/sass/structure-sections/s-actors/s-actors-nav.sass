@@ -9,8 +9,8 @@
   z-index: 2
   display: grid
   grid-template-columns: repeat(3, 1fr)
-  // grid-template-rows: 170/262.5*100% 92.5/262.5*100%
   grid-template-rows: max-content auto
+  
   transition: $slider-transition
 
   $tt: transparent
@@ -20,22 +20,27 @@
 
 .s-actors-info
   grid-column: 1/3
+  // order: 1
 
-.s-actors-nav-btns
+.s-actors-nav-control
   display: grid
-  grid-template-columns: auto max-content
+  grid-template-columns: repeat(2, max-content)
   grid-template-rows: auto max-content
   align-items: end
   justify-items: end
-  flex-wrap: wrap
+  justify-content: end
   grid-column: 3/-1
-  padding-left: $gutter
+  // order: 2
+
+.s-actors-nav-btn
 
 .s-actors-nav-btn-prev
   @extend .nav-btn-prev
+  grid-columns: 3/-1
 
 .s-actors-nav-btn-next
   @extend .nav-btn-next
+  grid-columns: 3/-1
 
 .s-actors-nav-counter
   grid-column: 1/-1
@@ -43,8 +48,28 @@
   text-align: center
   margin-top: 6px
 
+.s-actors-links
+  grid-column: 1/-1
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  justify-items: center
+  align-items: end
+  grid-column-gap: 2*$gutter
+
+.s-actors-link
+  margin-bottom: 21/92.5*100%
+  color: $accent
+  opacity: 0.8
+  transition: $common-transition
+
+  &:hover
+    opacity: 1
+
+.s-actors-like, .s-actors-share, .s-actors-mail
+  @extend .s-actors-link
+  
 @include media-max($b-md)
-  $nav-container-side: grid-width(10, $w-sm)
+  $nav-container-side: $w-sm
   
   .s-actors-nav
     position: relative
