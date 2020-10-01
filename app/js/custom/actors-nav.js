@@ -1,5 +1,5 @@
 $(function () {
-  let container = $('#actors-slider .s-actors-info-container');
+  let container = $('#actors-slider .s-actors-nav');
   let button = $('#actors-slider .s-actors-popup-btn');
 
   let cord = {

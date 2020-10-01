@@ -1,40 +1,40 @@
 $(function () {
-  let items = [];
   let duration = 500;
   let isBlock = false;
 
+  let buttons = {
+    prev: $('#actors-slider .s-actors-nav-btn-prev'),
+    next: $('#actors-slider .s-actors-nav-btn-next')
+  };
+
+  let counter = $('.s-actors-nav-counter');
+
+  let images = $('#actors-slider .s-actors-image');
+  let info = $('#actors-slider .s-actors-info');
+  let items = [];
+
   inizializeSlider();
 
-  $('#actors-slider .nav-btn-prev').on('click', () => displayNewElem('prev'));
-  $('#actors-slider .nav-btn-next').on('click', () => displayNewElem('next'));
+  buttons.prev.on('click', () => displayNewElem('prev'));
+  buttons.next.on('click', () => displayNewElem('next'));
 
   function inizializeSlider() {
-    wrapImgAndInfo();
     createItems();
-
     $(items[0]).addClass('active');
 
     for (let i = 1; i < items.length; i++) {
       $(items[i]).hide();
     }
 
-    function wrapImgAndInfo() {
-      $('#actors-slider .s-actors-portrait').wrap('<div class="as-image-wrapper"></div>');
-      $('#actors-slider .s-actors-information').wrap('<div class="as-info-wrapper"></div>');
-      $('#actors-slider .as-info-wrapper').wrapAll('<div class="as-info"></div>');
-    }
-
     function createItems() {
-      for (let i = 0; i < $('#actors-slider .as-image-wrapper').length; i++) {
-        let item = [
-          $('#actors-slider .as-image-wrapper')[i],
-          $('#actors-slider .as-info-wrapper')[i]
-        ];
-
+      for (let i = 0; i < images.length; i++) {
+        let item = [images[i], info[i]];
+        item.index = i;
         items.push(item);
       }
     }
   }
+
 
   async function displayNewElem(direction) {
     if (isBlock) return;
@@ -42,6 +42,8 @@ $(function () {
 
     let currentItem = items.find((item) => $(item).hasClass('active'));
     let newItem = selectNewItem(direction);
+
+    updateCounter();
 
     await $(currentItem).removeClass('active').fadeOut(duration).promise();
     await $(newItem).addClass('active').fadeIn(duration).promise();
@@ -51,13 +53,23 @@ $(function () {
     function selectNewItem(direction) {
       let newItem;
 
-      if (direction === 'prev') newItem = $(currentItem).prev();
-      if (direction === 'next') newItem = $(currentItem).next();
+      if (direction === 'prev') newItem = items[currentItem.index - 1];
+      if (direction === 'next') newItem = items[currentItem.index + 1];
 
-      if (!newItem.length && direction === 'prev') newItem = items[items.length - 1];
-      if (!newItem.length && direction === 'next') newItem = items[0];
+      if (direction === 'prev' && currentItem.index === 0) {
+        newItem = items[items.length - 1];
+      }
+
+      if (direction === 'next' && currentItem.index === items.length - 1) {
+        newItem = items[0];
+      }
 
       return newItem;
+    }
+
+    function updateCounter() {
+      let newVal = newItem.index + 1;
+      counter.text(() => `${newVal}/${items.length}`);
     }
   }
 });
