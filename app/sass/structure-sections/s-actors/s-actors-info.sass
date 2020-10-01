@@ -5,7 +5,7 @@
   font-size: 18px
   text-transform: uppercase
   margin: 0
-  margin-top: 65/292.5*100%
+  margin-top: 65px
 
 .s-actors-profession
   font-style: italic
@@ -16,3 +16,23 @@
   font-weight: 300
   margin-top: 7.5px
   margin-bottom: 0
+
+@include media-max($b-md)
+  .s-actors-info
+    padding-left: 0
+  
+  .s-actors-name
+    margin-top: 0
+    text-align: center
+
+  .s-actors-profession
+    display: block
+    text-align: center
+    margin-top: 2px
+
+  .s-actors-text
+    margin-top: 10px
+
+@include media-max($b-sm)
+  .s-actors-text
+    text-align: justify

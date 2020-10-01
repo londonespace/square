@@ -12,8 +12,13 @@ $(function () {
     }
   }
 
+  let isNavControlFormed = true;
+  reviseNavControl();
+
   $(button).addClass('compress');
   $(button).on('click', onClick);
+
+  $(window).on('resize', reviseNavControl);
 
   function onClick() {
     if ($(container).hasClass('minimized')) {
@@ -32,5 +37,32 @@ $(function () {
   function maximizeNav() {
     $(container).css('transform', 'translate(0)').removeClass('minimized');
     $(button).removeClass('expand').addClass('compress');
+  }
+
+  function reviseNavControl() {
+    if ($(window).width() <= breakpoints.md && isNavControlFormed) {
+      disolveNavControl();
+      isNavControlFormed = false;
+    }
+
+    if ($(window).width() > breakpoints.md && !isNavControlFormed) {
+      formNavControl();
+      isNavControlFormed = true;
+    }
+  }
+
+  function disolveNavControl() {
+    $('#actors-slider .s-actors-nav-control').children().appendTo($(container));
+    $('#actors-slider .s-actors-nav-control').remove();
+  }
+
+  function formNavControl() {
+    $('<div class="s-actors-nav-control"></div>').appendTo($(container));
+    let navControlElems = ['btn-prev', 'btn-next', 'counter'];
+    console.log(1);
+
+    for (let elem of navControlElems) {
+      $(`.s-actors-nav-${elem}`).appendTo($('.s-actors-nav-control'));
+    }
   }
 })

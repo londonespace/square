@@ -20,13 +20,15 @@
 
 .s-actors-info
   grid-column: 1/3
+  grid-row: 1/2
 
 .s-actors-nav-control
   grid-column: 3/-1
+  grid-row: 1/2
 
 .s-actors-links
   grid-column: 1/-1
-  
+  grid-row: 2/-1
   
 @include media-max($b-md)
   $nav-container-side: $w-sm
@@ -35,4 +37,35 @@
     position: relative
     margin: 0 auto
     background: white
+    width: $nav-container-side
+    grid-template-columns: 1fr 4fr 1fr
+    grid-column-gap: grid-width(1, $w-md)
+    grid-template-rows: repeat(3, auto)
+    align-items: center
+
+  .s-actors-info
+    grid-column: 2/3
+    grid-row: 2/3
+
+  .s-actors-nav-btn-prev
+    grid-column: 1/2
+    grid-row: 2/3
+  
+  .s-actors-nav-btn-next
+    grid-column: 3/-1
+    grid-row: 2/3
+    justify-self: end
+
+  .s-actors-counter
+    grid-column: 2/3
+    grid-row: 1/2
+
+  .s-actors-links
+    grid-column: 2/3
+    grid-row: 3/-1
+
+@include media-max($b-sm)
+  $nav-container-side: 100%
+
+  .s-actors-nav
     width: $nav-container-side
