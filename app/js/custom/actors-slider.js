@@ -26,6 +26,8 @@ $(function () {
       $(items[i]).hide();
     }
 
+    counter.text(() => `${1}/${items.length}`);
+
     function createItems() {
       for (let i = 0; i < images.length; i++) {
         let item = [images[i], info[i]];
