@@ -1,0 +1,21 @@
+.s-actors-nav-control
+  display: grid
+  grid-template-columns: repeat(2, max-content)
+  grid-template-rows: auto max-content
+  align-items: end
+  justify-items: end
+  justify-content: end
+
+.s-actors-nav-btn-prev
+  @extend .nav-btn-prev
+  grid-columns: 3/-1
+
+.s-actors-nav-btn-next
+  @extend .nav-btn-next
+  grid-columns: 3/-1
+
+.s-actors-nav-counter
+  grid-column: 1/-1
+  width: 100%
+  text-align: center
+  margin-top: 6px
