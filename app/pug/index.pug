@@ -61,12 +61,16 @@ html(lang="en")
 
             button.s-actors-popup-btn
 
-      section.s-info
+      section.s-info: .s-info-container#info-container
         .s-info-banner
           img.s-info-banner-image(src="../img/fashion-workshop.png")
-          h3 fashion workshop
-          time #[span.days nov 21-23] #[span.hours 9:00am - 4:00pm]
-          button.rsvp RSVP
+          h3.s-info-banner-headling fashion workshop
+
+          time.s-info-banner-date 
+            span.s-info-banner-date-days nov 21-23 
+            span.s-info-banner-date-hours 9:00am - 4:00pm
+
+          button.s-info-rsvp RSVP
 
         .s-info-news
           h3 news
