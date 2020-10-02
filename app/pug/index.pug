@@ -31,6 +31,7 @@ html(lang="en")
           let actors = ['Morgan Freeman', 'Brad Pitt', 'Bruce Willis', 'Jennifer Aninston', 'Jennifer Lopez', 
           'Johnny Depp', 'Keira Knightley', 'Will Smith'];
 
+
         .s-actors-slider#actors-slider
 
           .s-actors-image-container
@@ -59,6 +60,77 @@ html(lang="en")
               a(href="#").s-actors-mail:  i.fa.fa-envelope
 
             button.s-actors-popup-btn
+
+      section.s-info
+        .s-info-banner
+          img.s-info-banner-image(src="../img/fashion-workshop.png")
+          h3 fashion workshop
+          time #[span.days nov 21-23] #[span.hours 9:00am - 4:00pm]
+          button.rsvp RSVP
+
+        .s-info-news
+          h3 news
+
+          -
+            let news = [
+              {
+                headling: 'new gallery set',
+                date: '09.12.2014',
+                thumbnailPath: '../img/news-1.png',
+                sketch: `Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Quisque fringilla mi orci, ac venenatis ante venenatis
+                  eget.`
+              },
+              {
+                headling: 'wedding workshop',
+                date: '09.12.2014',
+                thumbnailPath: '../img/news-2.png',
+                sketch: `Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Quisque fringilla mi orci, ac venenatis ante venenatis
+                  eget.`
+              },
+              {
+                headling: 'personal project',
+                date: '09.12.2014',
+                thumbnailPath: '../img/news-3.png',
+                sketch: `Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Quisque fringilla mi orci, ac venenatis ante venenatis
+                  eget.`
+              },
+            ];
+
+          mixin s-info-news-article(newsObj)
+            article.s-info-news-article
+              img.s-info-news-thumbnail(src=`${newsObj.thumbnailPath}`)
+              h1.s-info-news-headling #{`${newsObj.headling}`}
+              time.s-info-news-date #{`${newsObj.date}`}
+              p.s-info-news-sketch #{`${newsObj.sketch}`}
+              button.s-info-news-read-more
+
+          - for (let newsObj of news) 
+            +s-info-news-article(newsObj)
+
+        .s-info-contacts
+          img.s-info-logo-square(src="../img/square-logo-dark.svg")
+
+          ul.s-info-contacts-lines
+            li.s-info-phone +00 123 456 7890
+            li.s-info-mail info@square.com
+
+            ul.s-info-social-links
+            -
+              let socialNets = ['facebook', 'twitter', 'instagram', 
+                'flickr', 'google-plus'];
+
+            - for (let net of socialNets)
+              li.s-info-social-link-item: a.s-info-social-link(href="#")
+                i(class=`fa fa-${net}`)
+
+        .s-info-twit
+          a.s-info-twitter-link(href="#"): i(class='fa fa-twitter')
+          p.s-info-twitter-text 
+            | Unerdwear cookie liquorice. Cake donut cupcake lollipop
+            | soufflé candy. Chocolate oat cake #[span @cheesecake] tootsie roll.
 
     nav#m-menu
       ul.m-menu-list
