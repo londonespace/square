@@ -73,7 +73,8 @@ html(lang="en")
           button.s-info-rsvp RSVP
 
         .s-info-news
-          h3 news
+          h3.s-info-news-headling 
+            span news
 
           -
             let news = [
@@ -103,16 +104,21 @@ html(lang="en")
               },
             ];
 
-          mixin s-info-news-article(newsObj)
-            article.s-info-news-article
-              img.s-info-news-thumbnail(src=`${newsObj.thumbnailPath}`)
-              h1.s-info-news-headling #{`${newsObj.headling}`}
-              time.s-info-news-date #{`${newsObj.date}`}
-              p.s-info-news-sketch #{`${newsObj.sketch}`}
-              button.s-info-news-read-more
+          .s-info-news-articles
+            mixin s-info-news-article(newsObj)
+              article.s-info-news-article
+                img.s-info-news-thumbnail(src=`${newsObj.thumbnailPath}`)
 
-          - for (let newsObj of news) 
-            +s-info-news-article(newsObj)
+                .s-info-news-text-content
+                  h1.s-info-news-article-headling #{`${newsObj.headling}`}
+                  time.s-info-news-date #{`${newsObj.date}`}
+
+                  p.s-info-news-sketch 
+                    | #{newsObj.sketch} 
+                    button.s-info-news-read-more read more
+
+            - for (let newsObj of news) 
+              +s-info-news-article(newsObj)
 
         .s-info-contacts
           img.s-info-logo-square(src="../img/square-logo-dark.svg")
