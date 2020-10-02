@@ -1,0 +1,16 @@
+.s-info-container
+  @extend .container
+  margin-top: 60px
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  grid-column-gap: 2*$gutter
+  grid-template-rows: repeat(2, auto)
+
+.s-info-banner
+  grid-row: 1/-1
+
+.s-info-news
+  grid-row: 1/-1
+
+.s-info-twit
+  grid-column: 3/-1
