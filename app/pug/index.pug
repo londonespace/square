@@ -142,6 +142,17 @@ html(lang="en")
             | Unerdwear cookie liquorice. Cake donut cupcake lollipop
             | soufflé candy. Chocolate oat cake #[span @cheesecake] tootsie roll.
 
+      section.s-partners
+        .s-partners-container
+          -
+            let partners = ['broncolor-logo', 'hasselblad-logo', 
+              'manfrotto-logo', 'phaseone-logo'];
+
+          - for( let partner of partners)
+            img.s-partners-partner(src=`../img/${partner}.png`)
+
+
+
     nav#m-menu
       ul.m-menu-list
         li.m-menu-list-item: a.m-menu-link(href="#") home
