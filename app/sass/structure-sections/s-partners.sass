@@ -1,0 +1,19 @@
+.s-partners
+  margin-top: 100px
+
+.s-partners-container
+  @extend .container
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  grid-column-gap: 2*$gutter
+  align-items: center
+  justify-items: center
+
+.s-partners-logo
+  &:first-child
+    justify-self: start
+    padding-left: 10px
+
+  &:last-child
+    justify-self: end
+    padding-right: 10px
