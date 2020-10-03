@@ -27,3 +27,12 @@
 
 .s-info-social-link
   @extend .social-link
+
+@include media-max($b-xl)
+  .s-info-contacts
+    margin-top: 0
+
+@include media-max($b-md)
+  .s-info-contacts
+    justify-self: start
+    padding-left: $gutter

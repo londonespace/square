@@ -3,6 +3,7 @@
   color: #fff
   text-align: center
   text-transform: uppercase
+  height: 359px
 
 .s-info-banner-headling
   font-size: 18px
@@ -27,3 +28,10 @@
   width: 65px
   height: 65px
   letter-spacing: 1px
+
+@include media-max($b-md)
+  .s-info-banner
+    height: 389px
+  
+  .s-info-banner-image
+    margin-top: 30px

@@ -7,12 +7,27 @@
   grid-template-columns: repeat(3, 1fr)
   grid-column-gap: 2*$gutter
   grid-template-rows: repeat(2, auto)
+  grid-template-areas: "banner news contacts" "banner news twit"
 
 .s-info-banner
-  grid-row: 1/-1
+  grid-area: banner
 
 .s-info-news
-  grid-row: 1/-1
+  grid-area: news
 
 .s-info-twit
-  grid-column: 3/-1
+  grid-area: twit
+
+@include media-max($b-xl)
+  .s-info-container
+    grid-template-columns: max-content auto
+    grid-template-rows: repeat(2, auto)
+    grid-row-gap: 30px
+    grid-template-areas: "banner news" "contacts twit"
+
+@include media-max($b-md)
+  .s-info-container
+    max-width: $w-sm
+    grid-template-columns: auto
+    grid-template-rows: repeat(4, auto)
+    grid-template-areas: "banner" "news" "contacts" "twit"
