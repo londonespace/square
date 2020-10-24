@@ -34,5 +34,12 @@
 
 @include media-max($b-md)
   .s-info-contacts
-    justify-self: start
-    padding-left: $gutter
+    width: $w-sm
+    justify-content: start
+    margin: 0 auto
+    padding-left: 2*$gutter
+
+@include media-max($b-sm)
+  .s-info-contacts
+    width: auto
+    padding-left: 0

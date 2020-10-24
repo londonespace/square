@@ -11,7 +11,7 @@
   span
     display: inline-block
     margin-left: 10px
-  
+
   &::after
     display: block
     content: ''
@@ -62,22 +62,19 @@
 @include media-max($b-xl)
   .s-info-news
     justify-self: center
-    width: 80%
-    
-@include media-max($b-lg)
-  .s-info-news
     width: 90%
 
+@include media-max($b-lg)
   .s-info-news-article
     grid-column-gap: 20px
 
 @include media-max($b-md)
   .s-info-news
+    max-width: $w-sm
     width: auto
-    padding: 0 5px
-  
+
   .s-info-news-article:not(:last-child)
-    margin-bottom: 15px
+    margin-bottom: 20px
 
 @include media-max($b-sm)
   .s-info-news
