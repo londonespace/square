@@ -18,12 +18,12 @@ html(lang="en")
 
       .header-social-links-wrapper
         ul.header-social-links
-          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-facebook")
-          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-twitter")
-          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-instagram")
-          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-flickr")
-          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-google-plus")
-          li.header-social-link-item: a.header-social-link(href="#"): i(class="fa fa-envelope")
+          -
+            let headerSocialLinks = ['facebook', 'twitter', 'instagram', 
+            'flickr', 'google-plus', 'envelope'];
+
+          - for (link of headerSocialLinks)
+            li.header-social-link-item: a.header-social-link(href="#"): i(class=`fa fa-${link}`)
 
     main
       section.s-actors
@@ -50,16 +50,16 @@ html(lang="en")
               +s-actors-info(actorName)
 
             .s-actors-nav-control
-              button.s-actors-nav-btn-prev
+              button.s-actors-nav-btn-prev(type="button")
               button.s-actors-nav-btn-next
               .s-actors-nav-counter
 
             .s-actors-links
-              a(href="#").s-actors-like:  i.fa.fa-heart
-              a(href="#").s-actors-share: i.fa.fa-share
-              a(href="#").s-actors-mail:  i.fa.fa-envelope
+              a.s-actors-like(href="#"):  i.fa.fa-heart
+              a.s-actors-share(href="#"): i.fa.fa-share
+              a.s-actors-mail(href="#"):  i.fa.fa-envelope
 
-            button.s-actors-popup-btn
+            button.s-actors-popup-btn(type="button")
 
       section.s-info: .s-info-container#info-container
         .s-info-banner
@@ -70,7 +70,7 @@ html(lang="en")
             span.s-info-banner-date-days nov 21-23 
             span.s-info-banner-date-hours 9:00am - 4:00pm
 
-          button.s-info-rsvp RSVP
+          button.s-info-rsvp(type="button") RSVP
 
         .s-info-news
           h3.s-info-news-headling 
@@ -115,7 +115,7 @@ html(lang="en")
 
                   p.s-info-news-sketch 
                     | #{newsObj.sketch} 
-                    button.s-info-news-read-more read more
+                    button.s-info-news-read-more(type="link") read more
 
             - for (let newsObj of news) 
               +s-info-news-article(newsObj)
@@ -129,12 +129,12 @@ html(lang="en")
 
             ul.s-info-social-links
               -
-                let socialNets = ['facebook', 'twitter', 'instagram', 
+                let infoSocialLinks = ['facebook', 'twitter', 'instagram', 
                 'flickr', 'google-plus'];
 
-              - for (let net of socialNets)
+              - for (let link of infoSocialLinks)
                 li.s-info-social-link-item: a.s-info-social-link(href="#")
-                  i(class=`fa fa-${net}`)
+                  i(class=`fa fa-${link}`)
 
         .s-info-twit
           a.s-info-twitter-link(href="#"): i(class='fa fa-twitter')
@@ -157,11 +157,8 @@ html(lang="en")
 
     nav#m-menu
       ul.m-menu-list
-        li.m-menu-list-item: a.m-menu-link(href="#") home
-        li.m-menu-list-item: a.m-menu-link(href="#") about
-        li.m-menu-list-item: a.m-menu-link(href="#") blog
-        li.m-menu-list-item: a.m-menu-link(href="#") portfolio
-        li.m-menu-list-item: a.m-menu-link(href="#") post
-        li.m-menu-list-item: a.m-menu-link(href="#") contact
+        - let mmenuItems = ['home', 'about', 'blog', 'portfolio', 'post', 'contact'];
+        - for (item of mmenuItems)
+          li.m-menu-list-item: a.m-menu-link(href="#") #{item}
 
     script(src="../js/app.min.js")
