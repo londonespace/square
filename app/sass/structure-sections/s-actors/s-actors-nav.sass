@@ -9,8 +9,8 @@
   z-index: 2
   display: grid
   grid-template-columns: repeat(3, 1fr)
-  grid-template-rows: max-content auto
-  
+  grid-template-rows: 70% auto
+
   transition: $slider-transition
 
   $tt: transparent
@@ -29,10 +29,10 @@
 .s-actors-links
   grid-column: 1/-1
   grid-row: 2/-1
-  
+
 @include media-max($b-md)
   $nav-container-side: $w-sm
-  
+
   .s-actors-nav
     position: relative
     margin: 0 auto
@@ -40,7 +40,7 @@
     width: $nav-container-side
     grid-template-columns: 1fr 4fr 1fr
     grid-column-gap: grid-width(1, $w-md)
-    grid-template-rows: repeat(3, auto)
+    grid-template-rows: auto 55% auto
     align-items: center
 
   .s-actors-info
@@ -50,7 +50,7 @@
   .s-actors-nav-btn-prev
     grid-column: 1/2
     grid-row: 2/3
-  
+
   .s-actors-nav-btn-next
     grid-column: 3/-1
     grid-row: 2/3

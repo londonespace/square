@@ -59,7 +59,6 @@ $(function () {
   function formNavControl() {
     $('<div class="s-actors-nav-control"></div>').appendTo($(container));
     let navControlElems = ['btn-prev', 'btn-next', 'counter'];
-    console.log(1);
 
     for (let elem of navControlElems) {
       $(`.s-actors-nav-${elem}`).appendTo($('.s-actors-nav-control'));

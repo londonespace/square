@@ -27,7 +27,7 @@
 .header-social-link
   @extend .social-link
 
-@media only screen and ( max-width : $b-md )
+@include media-max($b-md)
   .site-header
     grid-template-columns: grid-width(1, $w-xl) auto grid-width(2, $w-md)
 
@@ -35,7 +35,7 @@
     .header-social-link-item:nth-last-child(#{$i})
       display: none
 
-@media only screen and ( max-width : $b-sm )
+@include media-max($b-sm)
   .site-header
     height: 55px
 

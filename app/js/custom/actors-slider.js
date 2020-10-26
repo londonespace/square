@@ -2,6 +2,8 @@ $(function () {
   let duration = 500;
   let isBlock = false;
 
+  let imageContainer = $('.s-actors-image-container');
+
   let buttons = {
     prev: $('#actors-slider .s-actors-nav-btn-prev'),
     next: $('#actors-slider .s-actors-nav-btn-next')
@@ -14,6 +16,9 @@ $(function () {
   let items = [];
 
   inizializeSlider();
+  manageContainerHeight();
+
+  $(window).on('resize', manageContainerHeight);
 
   buttons.prev.on('click', () => displayNewElem('prev'));
   buttons.next.on('click', () => displayNewElem('next'));
@@ -73,5 +78,11 @@ $(function () {
       let newVal = newItem.index + 1;
       counter.text(() => `${newVal}/${items.length}`);
     }
+  }
+
+  function manageContainerHeight() {
+    imageContainer.height(imageContainer.width());
+    $('.s-actors-image').width(imageContainer.width());
+    $('.s-actors-image').height(imageContainer.width());
   }
 });
