@@ -7,8 +7,8 @@ $mm_transitionFunction: ease !default;
 $mm_backgroundColor: #000;
 $mm_borderColor: transparent !default;
 $mm_dimmedTextColor: rgba(#000, 0.3) !default;
-$mm_emphasizedBackgroundColor: rgba(#fff, 0.4) !default;
-$mm_highlightedBackgroundColor: rgba(#000, 0.05) !default;
+$mm_emphasizedBackgroundColor: transparent !default;
+$mm_highlightedBackgroundColor: transparent;
 $mm_navbarColor: rgba(#000, 0.3) !default;
 $mm_textColor: rgba(#fff, 0.75);
 
