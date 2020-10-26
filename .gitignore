@@ -1,8 +1,8 @@
 /**/node_modules/
 /.git/
 /sources/
-/dist/
-/package-lock.json
+/**/dist/
+/**/package-lock.json
 /app/html/
 /app/css/
 /app/js/app.min.js
