@@ -12,6 +12,7 @@ document.addEventListener(
 
     let menuParentElem = document.querySelector('#m-menu');
     let hamburger = document.querySelector('.hamburger');
+    console.log(hamburger);
 
     let observer = new MutationObserver(toggleHamburger);
 
@@ -19,7 +20,6 @@ document.addEventListener(
       { attributes: true, attributeFilter: ['class'] });
 
     function toggleHamburger() {
-      console.log(1);
       let isHambActive = hamburger.classList.contains('is-active');
       let isMenuActive = menuParentElem.classList.contains('mm-menu_opened');
 
