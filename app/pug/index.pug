@@ -10,8 +10,9 @@ html(lang="en")
   body
     header.site-header
       .header-hamburger-wrapper
-        a.hamburger.hamburger--squeeze(href="#m-menu")
-          span.hamburger-box: span.hamburger-inner
+        a.mburger.mburger--squeeze(href="#m-menu")
+          - for(let i = 0; i < 3; i++)
+            b
 
       .header-logo-wrapper
         img.header-logo-square(src="../img/square-logo.svg" alt="square")
