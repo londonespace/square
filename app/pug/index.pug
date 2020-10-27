@@ -21,10 +21,12 @@ html(lang="en")
         ul.header-social-links
           -
             let headerSocialLinks = ['facebook', 'twitter', 'instagram', 
-            'flickr', 'google-plus', 'envelope'];
+            'flickr', 'google', 'envelope'];
 
           - for (link of headerSocialLinks)
-            li.header-social-link-item: a.header-social-link(href="#"): i(class=`fa fa-${link}`)
+            li.header-social-link-item
+              a.header-social-link(href=socialLinks[link] target="_blank")
+                i(class=`fa fa-${link}`)
 
     main
       section.s-actors
@@ -131,14 +133,17 @@ html(lang="en")
             ul.s-info-social-links
               -
                 let infoSocialLinks = ['facebook', 'twitter', 'instagram', 
-                'flickr', 'google-plus'];
+                'flickr', 'google'];
 
               - for (let link of infoSocialLinks)
-                li.s-info-social-link-item: a.s-info-social-link(href="#")
-                  i(class=`fa fa-${link}`)
+                li.s-info-social-link-item
+                  a.s-info-social-link(href=socialLinks[link] target="_blank")
+                    i(class=`fa fa-${link}`)
 
         .s-info-twit
-          a.s-info-twitter-link(href="#"): i(class='fa fa-twitter')
+          a.s-info-twitter-link(href=socialLinks['twitter'] target="_blank")
+            i(class='fa fa-twitter')
+
           p.s-info-twit-text 
             | Unerdwear cookie liquorice. Cake donut cupcake lollipop
             | soufflé candy. Chocolate oat cake #[span @cheesecake] tootsie roll.
