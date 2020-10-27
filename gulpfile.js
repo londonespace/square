@@ -3,20 +3,22 @@ const { src, dest, parallel, series, watch } = require('gulp');
 const browserSync = require('browser-sync').create();
 const browserify = require('gulp-browserify');
 const concat = require('gulp-concat');
+
 const uglify = require('gulp-uglify-es').default;
 const sourcemaps = require('gulp-sourcemaps');
-
 const pug = require('gulp-pug');
 
+const data = require('gulp-data');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
+
 const cleanCSS = require('gulp-clean-css');
 const modifyCssUrls = require('gulp-modify-css-urls');
-
 const imageMin = require('gulp-imagemin');
-const newer = require('gulp-newer');
 
+const newer = require('gulp-newer');
 const del = require('del');
+const common = require('./node/common-node.js');
 
 //BROWSER 'SYNC'
 
@@ -33,6 +35,9 @@ function initBrowserSync() {
 
 function compilateToHTML() {
 	return src('app/pug/*.pug')
+		.pipe(data(function () {
+			return common.bundleJSON();
+		}))
 		.pipe(pug())
 		.pipe(dest('app/html/'))
 		.pipe(browserSync.stream());
@@ -101,9 +106,6 @@ let jsModules = [
 function buildAppScripts() {
 	return src(jsModules)
 		.pipe(sourcemaps.init())
-		// .pipe(browserify({
-		// 	insertGlobals: true
-		// }))
 		.pipe(concat('app.min.js'))
 		.pipe(uglify())
 		.pipe(sourcemaps.write())
