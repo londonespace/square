@@ -1,10 +1,10 @@
 /*
-	Tasks:
+    Tasks:
 
-	$ gulp 					: Runs all tasks.
-	$ gulp watch			: Starts a watch on all tasks.
-	$ gulp css				: Runs "css" task.
-	$ gulp webcomponent		: Runs "webcomponent" tasks.
+    $ gulp 					: Runs all tasks.
+    $ gulp watch			: Starts a watch on all tasks.
+    $ gulp css				: Runs "css" task.
+    $ gulp webcomponent		: Runs "webcomponent" tasks.
 */
 
 const { src, dest, watch, parallel, series } = require('gulp');
@@ -61,8 +61,7 @@ const webcomponent = series(
 );
 
 const watchTask = cb => {
-    watch(inputDir + '/scss/*.scss', parallel(css, webcomponent));
-    watch(inputDir + '/ts/*.ts', webcomponent);
+    watch(inputDir + '/scss/*.scss', css);
     cb();
 };
 

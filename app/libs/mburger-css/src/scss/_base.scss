@@ -42,6 +42,7 @@
         left: calc(var(--mb-button-size) * ((1 - var(--mb-bar-width)) / 2));
         width: calc(var(--mb-button-size) * var(--mb-bar-width));
         height: var(--mb-bar-height);
+        transform: scaleY(0.75);
         border-radius: 0;
         background: currentColor;
         color: inherit;
@@ -72,14 +73,14 @@
     b {
         &:nth-of-type(1) {
             bottom: calc(50% - (var(--mb-bar-height) / 2));
-            transform: rotate(45deg);
+            transform: rotate(45deg) scaleY(0.75);
         }
         &:nth-of-type(2) {
             opacity: 0;
         }
         &:nth-of-type(3) {
             top: calc(50% - (var(--mb-bar-height) / 2));
-            transform: rotate(-45deg);
+            transform: rotate(-45deg) scaleY(0.75);
         }
     }
 }

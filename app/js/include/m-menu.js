@@ -10,29 +10,22 @@ document.addEventListener(
       }
     });
 
-    let menuParentElem = document.querySelector('#m-menu');
-    let hamburger = document.querySelector('.hamburger');
-    console.log(hamburger);
+    let html = document.querySelector('html')
+    let body = document.querySelector('body');
 
-    let observer = new MutationObserver(toggleHamburger);
+    let observer = new MutationObserver(blockScroll);
 
     observer.observe(document.querySelector('#m-menu'),
       { attributes: true, attributeFilter: ['class'] });
 
-    function toggleHamburger() {
-      let isHambActive = hamburger.classList.contains('is-active');
-      let isMenuActive = menuParentElem.classList.contains('mm-menu_opened');
+    function blockScroll() {
+      let isBodyBlocked = body.classList.contains('mm-wrapper_blocking');
+      let isHtmlBlocked = html.classList.contains('mm-page_blocking');
 
-      if (!isMenuActive && isHambActive) {
-        hamburger.classList.remove('is-active');
-      }
-
-      if (isMenuActive && !isHambActive) {
-        setTimeout(
-          () => hamburger.classList.add('is-active'),
-          menu.conf.transitionDuration
-        );
+      if (isBodyBlocked ^ isHtmlBlocked) {
+        html.classList.toggle('mm-page_blocking');
       }
     }
+
   }
 );
