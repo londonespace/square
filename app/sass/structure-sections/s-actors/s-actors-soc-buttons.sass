@@ -1,0 +1,48 @@
+.s-actors-social-buttons
+  grid-column: 1/-1
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  justify-items: center
+  align-items: end
+  grid-column-gap: 2*$gutter
+
+.s-actors-social-button
+  margin-bottom: 21/92.5*100%
+  color: $accent
+  opacity: 0.8
+
+  &:hover
+    opacity: 1
+
+.s-actors-like .active
+  animation: liking .25s ease forwards
+
+.s-actors-share-message
+  position: fixed
+  top: 5px
+  right: 5px
+  width: 100px
+  height: 30px
+  color: #fff
+  background-color: #f3c90c
+  border-radius: 5%
+
+  span
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 100%
+    text-align: center
+
+@keyframes liking
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(1.15)
+  100%
+    transform: scale(1.1)
+
+@include media-max($b-md)
+  .s-actors-social-button
+    margin-bottom: 0

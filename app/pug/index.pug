@@ -25,7 +25,7 @@ html(lang="en")
 
           - for (link of headerSocialLinks)
             li.header-social-link-item
-              a.header-social-link(href=socialLinks[link] target="_blank")
+              a.header-social-link(href=links[link] target="_blank")
                 i(class=`fa fa-${link}`)
 
     main
@@ -54,13 +54,18 @@ html(lang="en")
 
             .s-actors-nav-control
               button.s-actors-nav-btn-prev(type="button")
-              button.s-actors-nav-btn-next
+              button.s-actors-nav-btn-next(type="button")
               .s-actors-nav-counter
 
-            .s-actors-links
-              a.s-actors-like(href="#"):  i.fa.fa-heart
-              a.s-actors-share(href="#"): i.fa.fa-share
-              a.s-actors-mail(href="#"):  i.fa.fa-envelope
+            .s-actors-social-buttons
+              button.s-actors-social-button.s-actors-like(type="button") 
+                i.fa.fa-heart-o
+
+              button.s-actors-social-button.s-actors-share(type="button")
+                i.fa.fa-share
+
+              a.s-actors-social-button.s-actors-mail(href=links['envelope'])
+                i.fa.fa-envelope
 
             button.s-actors-popup-btn(type="button")
 
@@ -137,11 +142,11 @@ html(lang="en")
 
               - for (let link of infoSocialLinks)
                 li.s-info-social-link-item
-                  a.s-info-social-link(href=socialLinks[link] target="_blank")
+                  a.s-info-social-link(href=links[link] target="_blank")
                     i(class=`fa fa-${link}`)
 
         .s-info-twit
-          a.s-info-twitter-link(href=socialLinks['twitter'] target="_blank")
+          a.s-info-twitter-link(href=links['twitter'] target="_blank")
             i(class='fa fa-twitter')
 
           p.s-info-twit-text 
