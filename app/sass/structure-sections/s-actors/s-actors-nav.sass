@@ -1,4 +1,7 @@
-@import 'app/sass/structure-sections/s-actors/_s-actors-var.sass'
+$nav-container-side: grid-width(3, $w-xl)
+$popup-btn-side: 30px
+$delta-val: $nav-container-side - $popup-btn-side 
+$slider-transition: all .5s ease
 
 .s-actors-nav
   position: absolute
@@ -10,13 +13,13 @@
   display: grid
   grid-template-columns: repeat(3, 1fr)
   grid-template-rows: 70% auto
-
   transition: $slider-transition
+  background: #fff
+  transform: translate(0)
 
-  $tt: transparent
-  $gradient-1: linear-gradient(0, #fff, #fff $delta-val, $tt $delta-val, $tt)
-  $gradient-2: linear-gradient(90deg, #fff $delta-val, $tt $delta-val, $tt)
-  background: $gradient-1, $gradient-2
+  &.minimized
+    transform: translate(-$delta-val, $delta-val)
+    background: transparent
 
 .s-actors-info
   grid-column: 1/3

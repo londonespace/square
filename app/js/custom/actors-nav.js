@@ -16,6 +16,7 @@ $(function () {
   reviseNavControl();
 
   $(button).addClass('compress');
+
   $(button).on('click', onClick);
 
   $(window).on('resize', reviseNavControl);
@@ -29,13 +30,12 @@ $(function () {
   }
 
   function minimizeNav() {
-    $(container).css('transform', `translate(-${cord.x}px, ${cord.y}px)`)
-      .addClass('minimized');
+    $(container).addClass('minimized');
     $(button).removeClass('compress').addClass('expand');
   }
 
   function maximizeNav() {
-    $(container).css('transform', 'translate(0)').removeClass('minimized');
+    $(container).removeClass('minimized');
     $(button).removeClass('expand').addClass('compress');
   }
 
