@@ -1,6 +1,8 @@
 document.addEventListener(
   'DOMContentLoaded', () => {
-    let menu = new Mmenu("#m-menu", {
+    wrapContent();
+
+    new Mmenu("#m-menu", {
       extensions: ['pagedim-black'],
 
       navbar: {
@@ -10,21 +12,32 @@ document.addEventListener(
       }
     });
 
-    let html = document.querySelector('html')
-    let body = document.querySelector('body');
-
     let observer = new MutationObserver(blockScroll);
 
     observer.observe(document.querySelector('#m-menu'),
       { attributes: true, attributeFilter: ['class'] });
 
     function blockScroll() {
-      let isBodyBlocked = body.classList.contains('mm-wrapper_blocking');
-      let isHtmlBlocked = html.classList.contains('mm-page_blocking');
+      let isBodyBlocked = $('body').hasClass('mm-wrapper_blocking');
+      let isHtmlBlocked = $('html').hasClass('mm-page_blocking');
 
       if (isBodyBlocked ^ isHtmlBlocked) {
-        html.classList.toggle('mm-page_blocking');
+        $('html').toggleClass('mm-page_blocking');
       }
+    }
+
+    function wrapContent() {
+      let tags = ['header', 'main', 'footer'];
+      let contentParts = [];
+
+      for (let tag of tags) {
+        if (!$(tag)) continue;
+        contentParts.push($(tag));
+      }
+
+      contentParts.forEach(part => part.wrap(
+        `<div id="${part.prop('tagName').toLowerCase()}-wrapper"></div>`)
+      );
     }
 
   }
