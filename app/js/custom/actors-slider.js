@@ -81,8 +81,13 @@ $(function () {
   }
 
   function manageContainerHeight() {
-    imageContainer.height(imageContainer.width());
-    $('.s-actors-image').width(imageContainer.width());
-    $('.s-actors-image').height(imageContainer.width());
+    let imageSide;
+
+    if ($(window).width() >= 1200) imageSide = 1140;
+    if ($(window).width() < 1200) imageSide = $(window).width();
+
+    imageContainer.height(imageSide);
+    $('.s-actors-image').width(imageSide);
+    $('.s-actors-image').height(imageSide);
   }
 });
