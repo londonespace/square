@@ -26,7 +26,7 @@ $(function () {
     newMessage.addClass('s-actors-share-message');
     newMessage.append('<span>Link copied!</span>')
 
-    newMessage.appendTo($('.s-actors-social-buttons'));
+    newMessage.appendTo($('#actors-slider'));
     newMessage.hide().fadeIn(250).delay(1000).fadeOut(250);
   }
 });
