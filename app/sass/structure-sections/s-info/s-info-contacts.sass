@@ -12,12 +12,18 @@
   list-style: none
   padding-left: 0
 
+.s-info-contact-link
+  color: $darkgrey
+  text-decoration: none
+
+  &:active
+    color: $accent
+
+  .fa
+    margin-right: 15px
+
 .s-info-phone
   margin-bottom: 5px
-
-.s-info
-  &-phone .fa, &-mail .fa
-    margin-right: 20px
 
 .s-info-social-links
   @extend .social-links
