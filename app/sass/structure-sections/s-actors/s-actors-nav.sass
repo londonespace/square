@@ -39,12 +39,14 @@ $slider-transition: all .5s ease
   .s-actors-nav
     position: relative
     margin: 0 auto
+    padding: 0 $gutter
     background: white
     width: $nav-container-side
     grid-template-columns: 1fr 4fr 1fr
     grid-column-gap: grid-width(1, $w-md)
-    grid-template-rows: auto 55% auto
+    grid-template-rows: 50px minmax(150px, auto) 50px
     align-items: center
+    height: auto
 
   .s-actors-info
     grid-column: 2/3
@@ -68,7 +70,7 @@ $slider-transition: all .5s ease
     grid-row: 3/-1
 
 @include media-max($b-sm)
-  $nav-container-side: 100%
+  $nav-container-side: auto
 
   .s-actors-nav
     width: $nav-container-side
