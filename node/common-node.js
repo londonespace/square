@@ -5,6 +5,8 @@ function bundleJSON() {
   let jsonData = {};
 
   for (file of jsonFiles) {
+    if (!file.includes('.json')) continue;
+
     let fileData = JSON.parse(fs.readFileSync(`app/pug/json/${file}`));
     Object.assign(jsonData, fileData);
   }
