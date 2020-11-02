@@ -40,12 +40,12 @@ $(function () {
   }
 
   function reviseNavControl() {
-    if ($(window).width() <= breakpoints.md && isNavControlFormed) {
+    if ($(window).width() <= 768 && isNavControlFormed) {
       disolveNavControl();
       isNavControlFormed = false;
     }
 
-    if ($(window).width() > breakpoints.md && !isNavControlFormed) {
+    if ($(window).width() > 768 && !isNavControlFormed) {
       formNavControl();
       isNavControlFormed = true;
     }
