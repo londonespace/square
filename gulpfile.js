@@ -48,9 +48,7 @@ function compilateToHTML() {
 let cssLibs = [
 	'app/libs/font-awesome/font-awesome.min.css',
 	'app/libs/custom-mmenu-js/dist/mmenu.css',
-	'app/libs/custom-hamburgers/dist/hamburgers.css',
-	'app/libs/owl-carousel/assets/owl.carousel.min.css',
-	'app/libs/owl-carousel/assets/owl.theme.default.min.css'
+	'app/libs/mburger-css/dist/mburger.css'
 ];
 
 let customModules = [
@@ -98,9 +96,8 @@ function buildDistStyles() {
 let jsModules = [
 	'app/libs/jquery/jquery.min.js',
 	'app/libs/custom-mmenu-js/dist/mmenu.js',
-	'app/libs/owl-carousel/owl.carousel.min.js',
 	'app/js/include/*.js',
-	'app/js/custom/*.js',
+	'app/js/custom/*.js'
 ];
 
 function buildAppScripts() {
@@ -124,7 +121,7 @@ function buildDistScripts() {
 
 function minimazeImages() {
 	return src('app/img/**/*')
-		.pipe(newer('dist/img/*'))
+		.pipe(newer('dist/img/**/*'))
 		.pipe(imageMin())
 		.pipe(dest('dist/img/'));
 }
@@ -140,8 +137,8 @@ function buildCopy() {
 		'app/css/*.min.css',
 		'app/js/*.min.js',
 		'app/img/dest/*',
-		'app/*.html',
-		'app/fonts/**/*'
+		'app/html/*.html',
+		'app/fonts/*'
 	], { base: 'app' })
 		.pipe(dest('dist'));
 }
@@ -159,19 +156,19 @@ function startWatching() {
 	watch('app/img/*', minimazeImages);
 }
 
-
 exports.initBrowserSync = initBrowserSync;
 
 exports.markup = compilateToHTML;
 exports.styles = buildAppStyles;
 exports.scripts = buildAppScripts;
 
-const transformCode = series(compilateToHTML, buildAppStyles, buildAppScripts);
+const appCodeBuild = series(compilateToHTML, buildAppStyles, buildAppScripts);
+const distCodeBuild = series(compilateToHTML, buildDistStyles, buildDistScripts)
 
 exports.minimazeImages = minimazeImages;
 exports.cleanMinImages = cleanMinImages;
 
-exports.build = series(cleanDist, transformCode, buildCopy, minimazeImages);
+exports.build = series(cleanDist, distCodeBuild, buildCopy, minimazeImages);
 
-exports.default = parallel(transformCode,
+exports.default = parallel(appCodeBuild,
 	series(initBrowserSync, browserSync.reload), startWatching);
