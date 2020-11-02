@@ -36,6 +36,10 @@
     &:last-child
       justify-self: auto
 
+@include media-max($b-md)
+  .s-partners
+    margin-top: 70px
+
 @include media-max($b-sm)
   .s-partners-container
     grid-template-rows: repeat(4, 1fr)
