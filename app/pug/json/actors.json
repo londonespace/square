@@ -1,0 +1,52 @@
+{
+  "actors": [
+    {
+      "name"        : "Morgan Freeman",
+      "path"        : "morgan-freeman.png",
+      "profession"  : "actor",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla mi orci, ac venenatis ante venenatis eget."
+    },
+    {
+      "name"        : "Brad Pitt",
+      "path"        : "brad-pitt.png",
+      "profession"  : "actor",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla mi orci, ac venenatis ante venenatis eget."
+    },
+    {
+      "name"        : "Bruce Willis",
+      "path"        : "bruce-willis.png",
+      "profession"  : "actor",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla mi orci, ac venenatis ante venenatis eget."
+    },
+    {
+      "name"        : "Jennifer Aninston",
+      "path"        : "jennifer-aninston.png",
+      "profession"  : "actor",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla mi orci, ac venenatis ante venenatis eget."
+    },
+    {
+      "name"        : "Jennifer Lopez",
+      "path"        : "jennifer-lopez.png",
+      "profession"  : "actor",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla mi orci, ac venenatis ante venenatis eget."
+    },
+    {
+      "name"        : "Johnny Depp",
+      "path"        : "johnny-depp.png",
+      "profession"  : "actor",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla mi orci, ac venenatis ante venenatis eget."
+    },
+    {
+      "name"        : "Keira Knightley",
+      "path"        : "keira-knightley.png",
+      "profession"  : "actor",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla mi orci, ac venenatis ante venenatis eget."
+    },
+    {
+      "name"        : "Will Smith",
+      "path"        : "will-smith.png",
+      "profession"  : "actor",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla mi orci, ac venenatis ante venenatis eget."
+    }
+  ]
+}

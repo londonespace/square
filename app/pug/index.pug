@@ -29,45 +29,38 @@ html(lang="en")
                 i(class=`fa fa-${link}`)
 
     main
-      section.s-actors
-        -
-          let actors = ['Morgan Freeman', 'Brad Pitt', 'Bruce Willis', 'Jennifer Aninston', 'Jennifer Lopez', 
-          'Johnny Depp', 'Keira Knightley', 'Will Smith'];
+      section.s-actors: .s-actors-slider#actors-slider
 
+        .s-actors-image-container
+          - for (actor of actors)
+            img(class="s-actors-image" src=`../img/actors/${actor.path}` alt=actor.name)
 
-        .s-actors-slider#actors-slider
+        .s-actors-nav
+          mixin s-actors-info(actor)
+            .s-actors-info
+              h3.s-actors-name #{actor.name}
+              em.s-actors-profession #{actor.profession}
+              p.s-actors-text #{actor.description}
 
-          .s-actors-image-container
-            - for (actorName of actors)
-              img(class="s-actors-image" src=`../img/actors/${actorName}.png` alt=actorName)
+          - for(let actor of actors)
+            +s-actors-info(actor)
 
-          .s-actors-nav
-            mixin s-actors-info(name)
-              .s-actors-info
-                h3.s-actors-name #{name}
-                em.s-actors-profession actor
-                p.s-actors-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  | Quisque fringilla mi orci, ac venenatis ante venenatis eget.
+          .s-actors-nav-control
+            button.s-actors-nav-btn-prev(type="button")
+            button.s-actors-nav-btn-next(type="button")
+            .s-actors-nav-counter 1/8
 
-            - for(let actorName of actors)
-              +s-actors-info(actorName)
+          .s-actors-social-buttons
+            button.s-actors-social-button.s-actors-like(type="button") 
+              i.fa.fa-heart-o
 
-            .s-actors-nav-control
-              button.s-actors-nav-btn-prev(type="button")
-              button.s-actors-nav-btn-next(type="button")
-              .s-actors-nav-counter 1/8
+            button.s-actors-social-button.s-actors-share(type="button")
+              i.fa.fa-share
 
-            .s-actors-social-buttons
-              button.s-actors-social-button.s-actors-like(type="button") 
-                i.fa.fa-heart-o
+            a.s-actors-social-button.s-actors-mail(href=links['envelope'])
+              i.fa.fa-envelope
 
-              button.s-actors-social-button.s-actors-share(type="button")
-                i.fa.fa-share
-
-              a.s-actors-social-button.s-actors-mail(href=links['envelope'])
-                i.fa.fa-envelope
-
-            button.s-actors-popup-btn(type="button")
+          button.s-actors-popup-btn(type="button")
 
       section.s-info: .s-info-container#info-container
         .s-info-banner

@@ -35,7 +35,7 @@ function initBrowserSync() {
 
 function compilateToHTML() {
 	return src('app/pug/*.pug')
-		.pipe(data(function () {
+		.pipe(data(() => {
 			return common.bundleJSON();
 		}))
 		.pipe(pug())
