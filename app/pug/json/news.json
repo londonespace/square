@@ -1,0 +1,22 @@
+{
+  "news": [
+    {
+      "headling": "new gallery set",
+      "date": "09.12.2014",
+      "thumbnailPath": "../img/news-1.png",
+      "sketch": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla mi orci, ac venenatis ante venenatis eget."
+    },
+    {
+      "headling": "wedding workshop",
+      "date": "09.12.2014",
+      "thumbnailPath": "../img/news-2.png",
+      "sketch": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla mi orci, ac venenatis ante venenatis eget."
+    },
+    {
+      "headling": "personal project",
+      "date": "09.12.2014",
+      "thumbnailPath": "../img/news-3.png",
+      "sketch": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla mi orci, ac venenatis ante venenatis eget."
+    }
+  ]
+}

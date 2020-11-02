@@ -77,49 +77,21 @@ html(lang="en")
           h3.s-info-news-headling 
             span news
 
-          -
-            let news = [
-              {
-                headling: 'new gallery set',
-                date: '09.12.2014',
-                thumbnailPath: '../img/news-1.png',
-                sketch: `Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. Quisque fringilla mi orci, ac venenatis ante venenatis
-                  eget.`
-              },
-              {
-                headling: 'wedding workshop',
-                date: '09.12.2014',
-                thumbnailPath: '../img/news-2.png',
-                sketch: `Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. Quisque fringilla mi orci, ac venenatis ante venenatis
-                  eget.`
-              },
-              {
-                headling: 'personal project',
-                date: '09.12.2014',
-                thumbnailPath: '../img/news-3.png',
-                sketch: `Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. Quisque fringilla mi orci, ac venenatis ante venenatis
-                  eget.`
-              },
-            ];
-
           .s-info-news-articles
             mixin s-info-news-article(newsObj)
               article.s-info-news-article
-                img.s-info-news-thumbnail(src=`${newsObj.thumbnailPath}`)
+                img.s-info-news-thumbnail(src=newsObj.thumbnailPath)
 
                 .s-info-news-text-content
-                  h1.s-info-news-article-headling #{`${newsObj.headling}`}
-                  time.s-info-news-date #{`${newsObj.date}`}
+                  h1.s-info-news-article-headling #{newsObj.headling}
+                  time.s-info-news-date #{newsObj.date}
 
                   p.s-info-news-sketch 
                     | #{newsObj.sketch} 
                     button.s-info-news-read-more(type="link") read more
 
-            - for (let newsObj of news) 
-              +s-info-news-article(newsObj)
+            - for (let i = 0; i < 3; i++)
+              +s-info-news-article(news[i])
 
         .s-info-contacts
           img.s-info-logo-square(src="../img/square-logo-dark.svg")
